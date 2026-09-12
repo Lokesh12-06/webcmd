@@ -620,5 +620,124 @@
     "lesson": "Successfully completed variant Variant E (UNSEEN WEBSITE)",
     "timestamp": "2026-09-12T09:11:46.511Z",
     "isTransferTest": true
+  },
+  {
+    "id": "att-variant a (standard form)-1789204752811",
+    "taskFamily": "job-application",
+    "variant": "Variant A (Standard Form)",
+    "strategyVersion": 0,
+    "success": true,
+    "steps": [
+      "Filled Candidate Name",
+      "Filled Contact Email",
+      "Uploaded Resume Document",
+      "Filled Years of Experience",
+      "Clicked Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 2003,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant A (Standard Form)",
+    "timestamp": "2026-09-12T09:19:14.814Z"
+  },
+  {
+    "id": "att-variant b (relabeled fields)-1789204754837",
+    "taskFamily": "job-application",
+    "variant": "Variant B (Relabeled Fields)",
+    "strategyVersion": 6,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 2104,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant B (Relabeled Fields)",
+    "timestamp": "2026-09-12T09:19:16.941Z"
+  },
+  {
+    "id": "att-variant c (re-ordered layout)-1789204756964",
+    "taskFamily": "job-application",
+    "variant": "Variant C (Re-ordered Layout)",
+    "strategyVersion": 6,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 2027,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant C (Re-ordered Layout)",
+    "timestamp": "2026-09-12T09:19:18.991Z"
+  },
+  {
+    "id": "att-variant d (adversarial popup)-1789204759010",
+    "taskFamily": "job-application",
+    "variant": "Variant D (Adversarial Popup)",
+    "strategyVersion": 6,
+    "success": false,
+    "steps": [
+      "Executed Rule: Dismissed Modal Overlay",
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 6,
+    "durationMs": 1982,
+    "failures": [
+      "Blocked by modal popup overlay (#talent-modal)"
+    ],
+    "lesson": "Successfully completed variant Variant D (Adversarial Popup)",
+    "timestamp": "2026-09-12T09:19:20.992Z"
+  },
+  {
+    "id": "att-variant d (adversarial recovery)-1789204761014",
+    "taskFamily": "job-application",
+    "variant": "Variant D (Adversarial Recovery)",
+    "strategyVersion": 7,
+    "success": true,
+    "steps": [
+      "Executed Rule: Dismissed Modal Overlay",
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 6,
+    "durationMs": 1910,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant D (Adversarial Recovery)",
+    "timestamp": "2026-09-12T09:19:22.924Z"
+  },
+  {
+    "id": "att-variant e (unseen website)-1789204762943",
+    "taskFamily": "job-application",
+    "variant": "Variant E (UNSEEN WEBSITE)",
+    "strategyVersion": 7,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 2115,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant E (UNSEEN WEBSITE)",
+    "timestamp": "2026-09-12T09:19:25.058Z",
+    "isTransferTest": true
   }
 ]
