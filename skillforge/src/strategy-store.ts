@@ -1,103 +1,103 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
+import type { Skill, Strategy, TaskAttempt } from './types.js';
 
-export interface Strategy {
-  id: string;
-  taskFamily: string;
-  description: string;
-  steps: string[];
-  successCount: number;
-  failureCount: number;
-  uses: number;
-  confidence: number;
-  version: number;
-  createdAt: string;
-  updatedAt: string;
-}
+const SKILLS_FILE = resolve('skillforge/data/skills.json');
+const ATTEMPTS_FILE = resolve('skillforge/data/attempts.json');
 
-const STORE_PATH = resolve('skillforge/data/strategies.json');
-
-async function ensureStore(): Promise<void> {
+async function ensureFile(filepath: string, defaultContent: string = '[]\n'): Promise<void> {
   try {
-    await readFile(STORE_PATH, 'utf8');
+    await readFile(filepath, 'utf8');
   } catch {
-    await mkdir(dirname(STORE_PATH), { recursive: true });
-    await writeFile(STORE_PATH, '[]\n', 'utf8');
+    await mkdir(dirname(filepath), { recursive: true });
+    await writeFile(filepath, defaultContent, 'utf8');
   }
 }
 
-export async function loadStrategies(): Promise<Strategy[]> {
-  await ensureStore();
-
-  const raw = await readFile(STORE_PATH, 'utf8');
-  if (!raw.trim()) return [];
-
-  const parsed: unknown = JSON.parse(raw);
-
-  if (!Array.isArray(parsed)) {
-    throw new Error('Strategy store is invalid');
-  }
-
-  return parsed as Strategy[];
-}
-
-export async function saveStrategy(strategy: Strategy): Promise<void> {
-  const strategies = await loadStrategies();
-
-  const index = strategies.findIndex(item => item.id === strategy.id);
-
-  if (index >= 0) {
-    strategies[index] = strategy;
-  } else {
-    strategies.push(strategy);
-  }
-
-  await writeFile(
-    STORE_PATH,
-    JSON.stringify(strategies, null, 2) + '\n',
-    'utf8',
-  );
-}
-
-export function calculateConfidence(
-  successCount: number,
-  failureCount: number,
-): number {
+export function calculateConfidence(successCount: number, failureCount: number): number {
   const total = successCount + failureCount;
-
   if (total === 0) return 0;
-
-  return Number((successCount / total).toFixed(3));
+  return Number((successCount / total).toFixed(2));
 }
 
-export async function recordOutcome(
-  strategyId: string,
-  success: boolean,
-): Promise<Strategy> {
-  const strategies = await loadStrategies();
-
-  const strategy = strategies.find(item => item.id === strategyId);
-
-  if (!strategy) {
-    throw new Error(`Strategy not found: ${strategyId}`);
+export async function loadSkills(): Promise<Skill[]> {
+  await ensureFile(SKILLS_FILE);
+  const raw = await readFile(SKILLS_FILE, 'utf8');
+  if (!raw.trim()) return [];
+  try {
+    return JSON.parse(raw) as Skill[];
+  } catch {
+    return [];
   }
+}
 
-  strategy.uses += 1;
+export async function loadSkill(taskFamily: string): Promise<Skill | null> {
+  const skills = await loadSkills();
+  return skills.find(s => s.taskFamily === taskFamily) || null;
+}
 
-  if (success) {
-    strategy.successCount += 1;
+export async function saveSkill(skill: Skill): Promise<void> {
+  const skills = await loadSkills();
+  const index = skills.findIndex(s => s.id === skill.id || s.taskFamily === skill.taskFamily);
+  
+  if (index >= 0) {
+    skills[index] = skill;
   } else {
-    strategy.failureCount += 1;
+    skills.push(skill);
   }
 
-  strategy.confidence = calculateConfidence(
-    strategy.successCount,
-    strategy.failureCount,
-  );
+  await writeFile(SKILLS_FILE, JSON.stringify(skills, null, 2) + '\n', 'utf8');
+}
 
-  strategy.updatedAt = new Date().toISOString();
+export async function loadAttempts(): Promise<TaskAttempt[]> {
+  await ensureFile(ATTEMPTS_FILE);
+  const raw = await readFile(ATTEMPTS_FILE, 'utf8');
+  if (!raw.trim()) return [];
+  try {
+    return JSON.parse(raw) as TaskAttempt[];
+  } catch {
+    return [];
+  }
+}
 
-  await saveStrategy(strategy);
+export async function recordAttempt(attempt: TaskAttempt): Promise<void> {
+  const attempts = await loadAttempts();
+  attempts.push(attempt);
+  await writeFile(ATTEMPTS_FILE, JSON.stringify(attempts, null, 2) + '\n', 'utf8');
+}
 
-  return strategy;
+export async function createOrGetInitialSkill(taskFamily: string, goal: string): Promise<Skill> {
+  const existing = await loadSkill(taskFamily);
+  if (existing) return existing;
+
+  const now = new Date().toISOString();
+  const initialSkill: Skill = {
+    id: `skill-${taskFamily}`,
+    taskFamily,
+    goal,
+    invariants: [
+      { id: 'inv-1', description: 'Identify candidate name field', category: 'personal_info', required: true },
+      { id: 'inv-2', description: 'Identify candidate email field', category: 'contact_info', required: true },
+      { id: 'inv-3', description: 'Locate resume/CV file upload control', category: 'document_upload', required: false },
+      { id: 'inv-4', description: 'Identify years of experience field', category: 'experience', required: false },
+      { id: 'inv-5', description: 'Locate and execute job submission action', category: 'submit_action', required: true },
+      { id: 'inv-6', description: 'Detect & dismiss blocking modal overlays if present', category: 'modal_handling', required: false },
+    ],
+    strategies: [],
+    currentVersion: 0,
+    confidence: 0,
+    transferScore: 0,
+    knownFailures: [],
+    createdAt: now,
+    updatedAt: now,
+  };
+
+  await saveSkill(initialSkill);
+  return initialSkill;
+}
+
+export async function getActiveStrategy(taskFamily: string): Promise<Strategy | null> {
+  const skill = await loadSkill(taskFamily);
+  if (!skill || skill.strategies.length === 0) return null;
+  return skill.strategies.find(s => s.version === skill.currentVersion && s.status === 'active') || null;
 }

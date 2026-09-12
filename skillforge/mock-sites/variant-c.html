@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apex Global Solutions - Job Application (Variant C)</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #020617; color: #e2e8f0; padding: 40px; display: flex; justify-content: center; }
+    .box { background: #0f172a; border-radius: 12px; padding: 32px; width: 100%; max-width: 520px; border: 1px solid #1e293b; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    h2 { color: #818cf8; margin-top: 0; }
+    .field-wrap { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 6px; font-weight: 600; color: #a5b4fc; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 10px 14px; background: #1e293b; border: 1px solid #334155; border-radius: 6px; color: #fff; box-sizing: border-box; }
+    .submit-cta { background: #6366f1; color: white; border: none; padding: 14px; width: 100%; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+    .submit-cta:hover { background: #4f46e5; }
+    .success { display: none; margin-top: 20px; padding: 16px; background: #065f46; border: 1px solid #10b981; color: #a7f3d0; border-radius: 6px; text-align: center; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Apex Global - Submit Resume & Info</h2>
+    <p style="color: #64748b; font-size: 0.85rem;">Variant C: Re-ordered Fields (Experience & Resume First)</p>
+    <form id="apex-form">
+      <!-- Reordered fields! Experience first, then Resume, then Name & Email -->
+      <div class="field-wrap">
+        <label for="exp">Experience (Years)</label>
+        <input type="number" id="exp" name="exp" value="4" min="0">
+      </div>
+      <div class="field-wrap">
+        <label for="resumeDoc">Upload Resume (PDF/DOC)</label>
+        <input type="file" id="resumeDoc" name="resumeDoc">
+      </div>
+      <div class="field-wrap">
+        <label for="yourName">Your Full Name</label>
+        <input type="text" id="yourName" name="yourName" placeholder="e.g. Jordan Lee" required>
+      </div>
+      <div class="field-wrap">
+        <label for="emailAddr">Email Address</label>
+        <input type="email" id="emailAddr" name="emailAddr" placeholder="jordan@example.com" required>
+      </div>
+      <button type="submit" id="btn-send-app" class="submit-cta">Send My Application</button>
+    </form>
+    <div id="success-banner" class="success">Application Submitted Successfully!</div>
+  </div>
+
+  <script>
+    document.getElementById('apex-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('success-banner').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

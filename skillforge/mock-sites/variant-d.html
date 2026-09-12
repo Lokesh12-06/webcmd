@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vanguard Labs - Job Application (Variant D)</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0f172a; color: #f8fafc; padding: 40px; display: flex; justify-content: center; position: relative; }
+    .card { background: #1e293b; border-radius: 12px; padding: 32px; width: 100%; max-width: 500px; border: 1px solid #334155; }
+    h2 { color: #f59e0b; margin-top: 0; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; margin-bottom: 6px; font-weight: 600; color: #cbd5e1; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 10px; background: #0f172a; border: 1px solid #475569; border-radius: 6px; color: #fff; box-sizing: border-box; }
+    button { background: #d97706; color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: 700; cursor: pointer; }
+    button:hover { background: #b45309; }
+    .success { display: none; margin-top: 20px; padding: 16px; background: #065f46; border: 1px solid #10b981; color: #a7f3d0; border-radius: 6px; text-align: center; font-weight: bold; }
+
+    /* Modal Overlay (Adversarial element) */
+    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+    .modal-box { background: #1e293b; border: 2px solid #f59e0b; padding: 24px; border-radius: 12px; max-width: 400px; text-align: center; }
+    .modal-box h3 { color: #f59e0b; margin-top: 0; }
+    .close-btn { background: #334155; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin-top: 16px; font-weight: 600; }
+    .close-btn:hover { background: #475569; }
+  </style>
+</head>
+<body>
+  <!-- Adversarial Popup Modal -->
+  <div id="talent-modal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>Join Talent Community</h3>
+      <p style="color: #94a3b8; font-size: 0.9rem;">Sign up for job alerts before applying.</p>
+      <button type="button" id="dismiss-modal-btn" class="close-btn">Dismiss & Continue</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Vanguard Labs - Career Form</h2>
+    <p style="color: #64748b; font-size: 0.85rem;">Variant D: Adversarial Modal Interrupt & Validation</p>
+    <form id="vanguard-form">
+      <div class="form-group">
+        <label for="candidate_name">Candidate Name</label>
+        <input type="text" id="candidate_name" name="candidate_name" required>
+      </div>
+      <div class="form-group">
+        <label for="email_address">Email Address</label>
+        <input type="email" id="email_address" name="email_address" required>
+      </div>
+      <div class="form-group">
+        <label for="attachment">Attach Resume File</label>
+        <input type="file" id="attachment" name="attachment">
+      </div>
+      <div class="form-group">
+        <label for="exp_years">Years Experience</label>
+        <input type="number" id="exp_years" name="exp_years" value="6">
+      </div>
+      <button type="submit" id="submit-application">Complete Application</button>
+    </form>
+    <div id="success-banner" class="success">Application Submitted Successfully!</div>
+  </div>
+
+  <script>
+    document.getElementById('dismiss-modal-btn').addEventListener('click', () => {
+      document.getElementById('talent-modal').style.display = 'none';
+    });
+
+    document.getElementById('vanguard-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (document.getElementById('talent-modal').style.display !== 'none') {
+        alert('Please dismiss the modal first!');
+        return;
+      }
+      document.getElementById('success-banner').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

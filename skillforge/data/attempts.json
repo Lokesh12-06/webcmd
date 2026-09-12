@@ -1,0 +1,116 @@
+[
+  {
+    "id": "att-variant a (standard form)-1789202658211",
+    "taskFamily": "job-application",
+    "variant": "Variant A (Standard Form)",
+    "strategyVersion": 0,
+    "success": true,
+    "steps": [
+      "Filled Candidate Name",
+      "Filled Contact Email",
+      "Uploaded Resume Document",
+      "Filled Years of Experience",
+      "Clicked Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 4186,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant A (Standard Form)",
+    "timestamp": "2026-09-12T08:44:22.397Z"
+  },
+  {
+    "id": "att-variant b (relabeled fields)-1789202662419",
+    "taskFamily": "job-application",
+    "variant": "Variant B (Relabeled Fields)",
+    "strategyVersion": 1,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 3974,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant B (Relabeled Fields)",
+    "timestamp": "2026-09-12T08:44:26.393Z"
+  },
+  {
+    "id": "att-variant c (re-ordered layout)-1789202666412",
+    "taskFamily": "job-application",
+    "variant": "Variant C (Re-ordered Layout)",
+    "strategyVersion": 1,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 3020,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant C (Re-ordered Layout)",
+    "timestamp": "2026-09-12T08:44:29.432Z"
+  },
+  {
+    "id": "att-variant d (adversarial popup)-1789202669449",
+    "taskFamily": "job-application",
+    "variant": "Variant D (Adversarial Popup)",
+    "strategyVersion": 1,
+    "success": false,
+    "steps": [
+      "Execution interrupted by WebCMD error"
+    ],
+    "stepCount": 1,
+    "durationMs": 31628,
+    "failures": [
+      "Blocked by modal popup overlay (#talent-modal)"
+    ],
+    "lesson": "WebCMD execution failed",
+    "timestamp": "2026-09-12T08:45:01.077Z"
+  },
+  {
+    "id": "att-variant d (adversarial recovery)-1789202701097",
+    "taskFamily": "job-application",
+    "variant": "Variant D (Adversarial Recovery)",
+    "strategyVersion": 2,
+    "success": true,
+    "steps": [
+      "Executed Rule: Dismissed Modal Overlay",
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 6,
+    "durationMs": 5479,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant D (Adversarial Recovery)",
+    "timestamp": "2026-09-12T08:45:06.576Z"
+  },
+  {
+    "id": "att-variant e (unseen website)-1789202706599",
+    "taskFamily": "job-application",
+    "variant": "Variant E (UNSEEN WEBSITE)",
+    "strategyVersion": 2,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 3968,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant E (UNSEEN WEBSITE)",
+    "timestamp": "2026-09-12T08:45:10.567Z",
+    "isTransferTest": true
+  }
+]

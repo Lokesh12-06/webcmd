@@ -48,3 +48,4 @@ benchmarks/datasets/*.json
 !benchmarks/datasets/Stealth_Webcmd.json
 benchmarks/.playwright-cli/
 benchmarks/.playwright/
+skillforge/.tmp/

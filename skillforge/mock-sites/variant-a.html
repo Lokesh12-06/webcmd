@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Acme Corp - Career Application (Variant A)</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #f8fafc; padding: 40px; display: flex; justify-content: center; }
+    .card { background: #1e293b; border-radius: 12px; padding: 32px; width: 100%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
+    h2 { margin-top: 0; color: #38bdf8; font-size: 1.5rem; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 8px; font-weight: 500; color: #94a3b8; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 10px 14px; background: #0f172a; border: 1px solid #475569; border-radius: 6px; color: #fff; box-sizing: border-box; }
+    button { background: #0284c7; color: white; border: none; padding: 12px 20px; width: 100%; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: #0369a1; }
+    .success { display: none; margin-top: 20px; padding: 16px; background: #065f46; border: 1px solid #10b981; color: #a7f3d0; border-radius: 6px; text-align: center; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Acme Corp - Career Application</h2>
+    <p style="color: #64748b; font-size: 0.9rem;">Variant A: Standard Form</p>
+    <form id="app-form">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="e.g. Alex Taylor" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="alex@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="resume">Resume / CV</label>
+        <input type="file" id="resume" name="resume">
+      </div>
+      <div class="form-group">
+        <label for="yearsExperience">Years of Experience</label>
+        <input type="number" id="yearsExperience" name="yearsExperience" value="5" min="0" max="40">
+      </div>
+      <button type="submit" id="btn-submit">Submit Application</button>
+    </form>
+    <div id="success-banner" class="success">Application Submitted Successfully!</div>
+  </div>
+
+  <script>
+    document.getElementById('app-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('success-banner').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
