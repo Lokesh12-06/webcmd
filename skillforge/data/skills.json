@@ -933,11 +933,11 @@
           "Locate and execute job submission action",
           "Detect & dismiss blocking modal overlays if present"
         ],
-        "successCount": 2,
-        "failureCount": 0,
+        "successCount": 5,
+        "failureCount": 1,
         "averageSteps": 6,
-        "averageDurationMs": 1927,
-        "confidence": 1,
+        "averageDurationMs": 1981,
+        "confidence": 0.83,
         "status": "active",
         "evidence": [
           "Evolved from failure on Variant D (Adversarial Popup): Blocked by modal popup overlay (#talent-modal)"
@@ -949,17 +949,202 @@
           "Modal overlay interruption on Variant D (Adversarial Popup)"
         ],
         "createdAt": "2026-09-12T09:07:29.217Z",
-        "updatedAt": "2026-09-12T09:07:33.047Z"
+        "updatedAt": "2026-09-12T09:11:40.618Z"
+      },
+      {
+        "id": "strat-job-application-v6",
+        "version": 6,
+        "intent": "Adversarial Resilient Form Completion with Modal Handling",
+        "rules": [
+          {
+            "id": "rule-modal-dismiss",
+            "intent": "Dismiss any blocking modal overlays or popups if present",
+            "category": "modal",
+            "selectorPatterns": [
+              "#dismiss-modal-btn",
+              ".close-btn",
+              "button:has-text(\"Dismiss\")",
+              "button:has-text(\"Close\")",
+              ".modal-overlay button"
+            ],
+            "semanticKeywords": [
+              "dismiss",
+              "close",
+              "cancel",
+              "continue"
+            ],
+            "actionType": "dismiss_modal",
+            "optional": false
+          },
+          {
+            "id": "rule-fill-name",
+            "intent": "Identify personal name input field and populate candidate name",
+            "category": "field",
+            "selectorPatterns": [
+              "#fullName",
+              "#applicant_name",
+              "#yourName",
+              "#candidate_name",
+              "#candidate_full_name",
+              "input[name*=\"name\"]",
+              "input[placeholder*=\"Name\"]"
+            ],
+            "semanticKeywords": [
+              "name",
+              "full name",
+              "applicant",
+              "candidate",
+              "your name"
+            ],
+            "actionType": "fill",
+            "valueTemplate": "Alex Morgan"
+          },
+          {
+            "id": "rule-fill-email",
+            "intent": "Identify email address input field and populate candidate email",
+            "category": "field",
+            "selectorPatterns": [
+              "#email",
+              "#contact_email",
+              "#emailAddr",
+              "#email_address",
+              "#candidate_email_address",
+              "input[type=\"email\"]",
+              "input[name*=\"email\"]"
+            ],
+            "semanticKeywords": [
+              "email",
+              "contact email",
+              "email address"
+            ],
+            "actionType": "fill",
+            "valueTemplate": "alex.morgan@example.com"
+          },
+          {
+            "id": "rule-upload-resume",
+            "intent": "Locate resume / CV document upload input and upload document",
+            "category": "file",
+            "selectorPatterns": [
+              "#resume",
+              "#cv_file",
+              "#resumeDoc",
+              "#attachment",
+              "#resume_attachment",
+              "input[type=\"file\"]"
+            ],
+            "semanticKeywords": [
+              "resume",
+              "cv",
+              "attachment",
+              "upload",
+              "document"
+            ],
+            "actionType": "upload",
+            "valueTemplate": "resume.pdf",
+            "optional": true
+          },
+          {
+            "id": "rule-fill-experience",
+            "intent": "Identify years of experience input field and populate value",
+            "category": "field",
+            "selectorPatterns": [
+              "#yearsExperience",
+              "#experience_years",
+              "#exp",
+              "#exp_years",
+              "#experience_years_input",
+              "input[name*=\"exp\"]",
+              "input[name*=\"years\"]"
+            ],
+            "semanticKeywords": [
+              "experience",
+              "years",
+              "industry",
+              "work"
+            ],
+            "actionType": "fill",
+            "valueTemplate": "5",
+            "optional": true
+          },
+          {
+            "id": "rule-check-terms",
+            "intent": "Check terms and policy agreement if present",
+            "category": "field",
+            "selectorPatterns": [
+              "#terms_agree",
+              "input[name*=\"terms\"]",
+              "input[name*=\"agree\"]",
+              "input[type=\"checkbox\"]"
+            ],
+            "semanticKeywords": [
+              "terms",
+              "agree",
+              "verify",
+              "policy"
+            ],
+            "actionType": "click",
+            "optional": true
+          },
+          {
+            "id": "rule-submit-application",
+            "intent": "Locate final application submit action button and click",
+            "category": "submit",
+            "selectorPatterns": [
+              "#btn-submit",
+              "#btn-apply-now",
+              "#btn-send-app",
+              "#submit-application",
+              "#final-submit-trigger",
+              "button[type=\"submit\"]",
+              "button:has-text(\"Submit\")",
+              "button:has-text(\"Apply\")"
+            ],
+            "semanticKeywords": [
+              "submit",
+              "apply",
+              "send",
+              "finalize",
+              "complete"
+            ],
+            "actionType": "click"
+          }
+        ],
+        "invariants": [
+          "Identify candidate name field",
+          "Identify candidate email field",
+          "Locate resume/CV file upload control",
+          "Identify years of experience field",
+          "Locate and execute job submission action",
+          "Detect & dismiss blocking modal overlays if present"
+        ],
+        "successCount": 2,
+        "failureCount": 0,
+        "averageSteps": 6,
+        "averageDurationMs": 1942,
+        "confidence": 1,
+        "status": "active",
+        "evidence": [
+          "Evolved from failure on Variant D (Adversarial Popup): Blocked by modal popup overlay (#talent-modal)"
+        ],
+        "failureModes": [
+          "Modal overlay interruption on Variant D (Adversarial Popup)",
+          "Modal overlay interruption on Variant D (Adversarial Popup)",
+          "Modal overlay interruption on Variant D (Adversarial Popup)",
+          "Modal overlay interruption on Variant D (Adversarial Popup)",
+          "Modal overlay interruption on Variant D (Adversarial Popup)"
+        ],
+        "createdAt": "2026-09-12T09:11:42.580Z",
+        "updatedAt": "2026-09-12T09:11:46.513Z"
       }
     ],
-    "currentVersion": 5,
+    "currentVersion": 6,
     "confidence": 0.85,
     "transferScore": 1,
     "knownFailures": [
       "blocking_modal_overlay"
     ],
     "createdAt": "2026-09-12T08:44:18.206Z",
-    "updatedAt": "2026-09-12T09:07:33.047Z"
+    "updatedAt": "2026-09-12T09:11:46.513Z"
   },
   {
     "id": "skill-verification-test",

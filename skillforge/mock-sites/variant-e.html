@@ -60,12 +60,24 @@
       <button type="submit" id="final-submit-trigger" class="btn-finalize">Finalize & Submit Application</button>
     </form>
 
-    <div id="success-banner" class="success">&check; Application Submitted Successfully!</div>
+    <div id="success-banner" class="success">&check; Application Submitted & Recorded!</div>
   </div>
 
   <script>
-    document.getElementById('nexus-form').addEventListener('submit', (e) => {
+    document.getElementById('nexus-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      const candidate_full_name = document.getElementById('candidate_full_name').value;
+      const candidate_email_address = document.getElementById('candidate_email_address').value;
+      const experience_years_input = document.getElementById('experience_years_input').value;
+
+      try {
+        await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ variant: 'Variant E', candidate_full_name, candidate_email_address, experience_years_input })
+        });
+      } catch (err) {}
+
       document.getElementById('success-banner').style.display = 'block';
     });
   </script>

@@ -56,7 +56,7 @@
       </div>
       <button type="submit" id="submit-application">Complete Application</button>
     </form>
-    <div id="success-banner" class="success">&check; Application Submitted Successfully!</div>
+    <div id="success-banner" class="success">&check; Application Submitted & Recorded!</div>
   </div>
 
   <script>
@@ -64,12 +64,24 @@
       document.getElementById('talent-modal').style.display = 'none';
     });
 
-    document.getElementById('vanguard-form').addEventListener('submit', (e) => {
+    document.getElementById('vanguard-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       if (document.getElementById('talent-modal').style.display !== 'none') {
         alert('Please dismiss the modal first!');
         return;
       }
+      const candidate_name = document.getElementById('candidate_name').value;
+      const email_address = document.getElementById('email_address').value;
+      const exp_years = document.getElementById('exp_years').value;
+
+      try {
+        await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ variant: 'Variant D', candidate_name, email_address, exp_years })
+        });
+      } catch (err) {}
+
       document.getElementById('success-banner').style.display = 'block';
     });
   </script>

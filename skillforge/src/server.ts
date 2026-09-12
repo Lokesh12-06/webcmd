@@ -17,8 +17,37 @@ const MIME_TYPES: Record<string, string> = {
   '.png': 'image/png',
 };
 
+// Global SSE clients for streaming live telemetry
+const sseClients: ServerResponse[] = [];
+
+export function broadcastTelemetry(event: string, data: any) {
+  const payload = `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`;
+  for (const client of sseClients) {
+    try {
+      client.write(payload);
+    } catch {}
+  }
+}
+
 async function handleApiRequest(req: IncomingMessage, res: ServerResponse): Promise<boolean> {
   const url = req.url || '/';
+
+  // SSE Telemetry Stream
+  if (url === '/api/telemetry') {
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+      'Access-Control-Allow-Origin': '*',
+    });
+    res.write('retry: 1000\n\n');
+    sseClients.push(res);
+    req.on('close', () => {
+      const idx = sseClients.indexOf(res);
+      if (idx >= 0) sseClients.splice(idx, 1);
+    });
+    return true;
+  }
 
   if (url === '/api/skill') {
     const skill = await loadSkill('job-application');
@@ -34,12 +63,36 @@ async function handleApiRequest(req: IncomingMessage, res: ServerResponse): Prom
     return true;
   }
 
+  // Handle manual human form submission from mock pages
+  if (url === '/api/submit' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      let parsed = {};
+      try { parsed = JSON.parse(body); } catch {}
+      broadcastTelemetry('human_submission', { timestamp: new Date().toISOString(), data: parsed });
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, message: 'Application submitted successfully and recorded by SkillForge!' }));
+    });
+    return true;
+  }
+
   if (url === '/api/run-benchmark' && req.method === 'POST') {
     try {
-      const results = await runFullSkillForgeBenchmark(`http://localhost:${PORT}`);
+      broadcastTelemetry('benchmark_start', { timestamp: new Date().toISOString() });
+      
+      const results = await runFullSkillForgeBenchmark(
+        `http://localhost:${PORT}`,
+        (step) => {
+          broadcastTelemetry('benchmark_step', step);
+        }
+      );
+      
+      broadcastTelemetry('benchmark_end', results);
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(results));
     } catch (err: any) {
+      broadcastTelemetry('benchmark_error', { message: err.message });
       res.writeHead(500, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ ok: false, error: err.message }));
     }
@@ -92,7 +145,6 @@ export function startServer(port: number = PORT): Promise<any> {
   });
 }
 
-// Allow direct CLI launch: node skillforge/src/server.js
 if (process.argv[1] && process.argv[1].includes('server')) {
   startServer();
 }
