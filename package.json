@@ -79,7 +79,8 @@
     "advise:listing-id-pairing": "node scripts/check-listing-id-pairing.mjs",
     "check:package-bin": "node scripts/check-package-bin.mjs",
     "demo": "node node_modules/tsx/dist/cli.mjs skillforge/src/demo.ts",
-    "skillforge:server": "node node_modules/tsx/dist/cli.mjs skillforge/src/server.ts"
+    "skillforge:server": "node node_modules/tsx/dist/cli.mjs skillforge/src/server.ts",
+    "test:verify": "node node_modules/tsx/dist/cli.mjs skillforge/src/verify-all.ts"
   },
   "keywords": [
     "cli",

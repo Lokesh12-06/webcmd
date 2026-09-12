@@ -112,5 +112,259 @@
     "lesson": "Successfully completed variant Variant E (UNSEEN WEBSITE)",
     "timestamp": "2026-09-12T08:45:10.567Z",
     "isTransferTest": true
+  },
+  {
+    "id": "att-variant a (standard form)-1789203009483",
+    "taskFamily": "job-application",
+    "variant": "Variant A (Standard Form)",
+    "strategyVersion": 0,
+    "success": true,
+    "steps": [
+      "Filled Candidate Name",
+      "Filled Contact Email",
+      "Uploaded Resume Document",
+      "Filled Years of Experience",
+      "Clicked Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 1996,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant A (Standard Form)",
+    "timestamp": "2026-09-12T08:50:11.479Z"
+  },
+  {
+    "id": "att-variant b (relabeled fields)-1789203011498",
+    "taskFamily": "job-application",
+    "variant": "Variant B (Relabeled Fields)",
+    "strategyVersion": 2,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 1894,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant B (Relabeled Fields)",
+    "timestamp": "2026-09-12T08:50:13.393Z"
+  },
+  {
+    "id": "att-variant c (re-ordered layout)-1789203013412",
+    "taskFamily": "job-application",
+    "variant": "Variant C (Re-ordered Layout)",
+    "strategyVersion": 2,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 1950,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant C (Re-ordered Layout)",
+    "timestamp": "2026-09-12T08:50:15.362Z"
+  },
+  {
+    "id": "att-variant d (adversarial popup)-1789203015382",
+    "taskFamily": "job-application",
+    "variant": "Variant D (Adversarial Popup)",
+    "strategyVersion": 2,
+    "success": false,
+    "steps": [
+      "Executed Rule: Dismissed Modal Overlay",
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 6,
+    "durationMs": 1939,
+    "failures": [
+      "Blocked by modal popup overlay (#talent-modal)"
+    ],
+    "lesson": "Successfully completed variant Variant D (Adversarial Popup)",
+    "timestamp": "2026-09-12T08:50:17.321Z"
+  },
+  {
+    "id": "att-variant d (adversarial recovery)-1789203017341",
+    "taskFamily": "job-application",
+    "variant": "Variant D (Adversarial Recovery)",
+    "strategyVersion": 3,
+    "success": true,
+    "steps": [
+      "Executed Rule: Dismissed Modal Overlay",
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 6,
+    "durationMs": 1951,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant D (Adversarial Recovery)",
+    "timestamp": "2026-09-12T08:50:19.292Z"
+  },
+  {
+    "id": "att-variant e (unseen website)-1789203019313",
+    "taskFamily": "job-application",
+    "variant": "Variant E (UNSEEN WEBSITE)",
+    "strategyVersion": 3,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 1978,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant E (UNSEEN WEBSITE)",
+    "timestamp": "2026-09-12T08:50:21.291Z",
+    "isTransferTest": true
+  },
+  {
+    "id": "att-test-1",
+    "taskFamily": "verification-test",
+    "variant": "Variant A",
+    "strategyVersion": 1,
+    "success": true,
+    "steps": [
+      "Step 1",
+      "Step 2"
+    ],
+    "stepCount": 2,
+    "durationMs": 100,
+    "failures": [],
+    "lesson": "Test lesson",
+    "timestamp": "2026-09-12T08:53:19.531Z"
+  },
+  {
+    "id": "att-variant a (standard form)-1789203199621",
+    "taskFamily": "job-application",
+    "variant": "Variant A (Standard Form)",
+    "strategyVersion": 0,
+    "success": true,
+    "steps": [
+      "Filled Candidate Name",
+      "Filled Contact Email",
+      "Uploaded Resume Document",
+      "Filled Years of Experience",
+      "Clicked Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 2002,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant A (Standard Form)",
+    "timestamp": "2026-09-12T08:53:21.623Z"
+  },
+  {
+    "id": "att-variant b (relabeled fields)-1789203201644",
+    "taskFamily": "job-application",
+    "variant": "Variant B (Relabeled Fields)",
+    "strategyVersion": 3,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 1982,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant B (Relabeled Fields)",
+    "timestamp": "2026-09-12T08:53:23.626Z"
+  },
+  {
+    "id": "att-variant c (re-ordered layout)-1789203203645",
+    "taskFamily": "job-application",
+    "variant": "Variant C (Re-ordered Layout)",
+    "strategyVersion": 3,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 1971,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant C (Re-ordered Layout)",
+    "timestamp": "2026-09-12T08:53:25.616Z"
+  },
+  {
+    "id": "att-variant d (adversarial popup)-1789203205637",
+    "taskFamily": "job-application",
+    "variant": "Variant D (Adversarial Popup)",
+    "strategyVersion": 3,
+    "success": false,
+    "steps": [
+      "Executed Rule: Dismissed Modal Overlay",
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 6,
+    "durationMs": 2001,
+    "failures": [
+      "Blocked by modal popup overlay (#talent-modal)"
+    ],
+    "lesson": "Successfully completed variant Variant D (Adversarial Popup)",
+    "timestamp": "2026-09-12T08:53:27.638Z"
+  },
+  {
+    "id": "att-variant d (adversarial recovery)-1789203207659",
+    "taskFamily": "job-application",
+    "variant": "Variant D (Adversarial Recovery)",
+    "strategyVersion": 4,
+    "success": true,
+    "steps": [
+      "Executed Rule: Dismissed Modal Overlay",
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 6,
+    "durationMs": 1998,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant D (Adversarial Recovery)",
+    "timestamp": "2026-09-12T08:53:29.657Z"
+  },
+  {
+    "id": "att-variant e (unseen website)-1789203209680",
+    "taskFamily": "job-application",
+    "variant": "Variant E (UNSEEN WEBSITE)",
+    "strategyVersion": 4,
+    "success": true,
+    "steps": [
+      "Executed Rule: Populate Name",
+      "Executed Rule: Populate Email",
+      "Executed Rule: Upload Resume Document",
+      "Executed Rule: Set Experience",
+      "Executed Rule: Execute Submit Action"
+    ],
+    "stepCount": 5,
+    "durationMs": 1910,
+    "failures": [],
+    "lesson": "Successfully completed variant Variant E (UNSEEN WEBSITE)",
+    "timestamp": "2026-09-12T08:53:31.590Z",
+    "isTransferTest": true
   }
 ]
