@@ -4,30 +4,31 @@
   <meta charset="UTF-8">
   <title>TechScale Inc - Career Portal (Variant B)</title>
   <style>
-    body { font-family: 'Inter', sans-serif; background: #111827; color: #f9fafb; padding: 40px; display: flex; justify-content: center; }
-    .container { background: #1f2937; border-radius: 16px; padding: 36px; width: 100%; max-width: 550px; border: 1px solid #374151; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
-    h1 { color: #f43f5e; font-size: 1.6rem; margin-bottom: 8px; }
-    .subtitle { color: #9ca3af; font-size: 0.875rem; margin-bottom: 24px; }
-    .input-field { margin-bottom: 18px; }
-    label { display: block; font-size: 0.875rem; font-weight: 600; color: #d1d5db; margin-bottom: 6px; }
-    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 12px; background: #111827; border: 1px solid #4b5563; border-radius: 8px; color: #fff; box-sizing: border-box; }
-    .action-btn { background: #e11d48; color: white; border: none; padding: 14px; width: 100%; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 12px; font-size: 1rem; }
-    .action-btn:hover { background: #be123c; }
-    .success { display: none; margin-top: 20px; padding: 16px; background: #064e3b; border: 1px solid #059669; color: #6ee7b7; border-radius: 8px; text-align: center; font-weight: bold; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #070a12; color: #f9fafb; padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
+    .container { background: rgba(17, 24, 39, 0.8); border-radius: 18px; padding: 38px; width: 100%; max-width: 540px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.6); backdrop-filter: blur(12px); }
+    h1 { color: #f43f5e; font-size: 1.7rem; font-weight: 800; margin-bottom: 6px; }
+    .subtitle { color: #9ca3af; font-size: 0.88rem; margin-bottom: 24px; }
+    .input-field { margin-bottom: 20px; }
+    label { display: block; font-size: 0.88rem; font-weight: 600; color: #d1d5db; margin-bottom: 8px; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 12px; background: #0b0f19; border: 1px solid #374151; border-radius: 8px; color: #fff; box-sizing: border-box; font-size: 0.95rem; }
+    input:focus { border-color: #f43f5e; outline: none; }
+    .action-btn { background: linear-gradient(135deg, #e11d48, #be123c); color: white; border: none; padding: 14px; width: 100%; border-radius: 10px; font-weight: 700; cursor: pointer; margin-top: 8px; font-size: 1rem; box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4); transition: all 0.2s; }
+    .action-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(225, 29, 72, 0.6); }
+    .success { display: none; margin-top: 24px; padding: 16px; background: rgba(52, 211, 153, 0.15); border: 1px solid #059669; color: #6ee7b7; border-radius: 10px; text-align: center; font-weight: 700; font-size: 1.05rem; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>TechScale Inc - Apply Now</h1>
-    <div class="subtitle">Variant B: Relabeled Fields & Flex Layout</div>
+    <h1>TechScale Inc - Join Engineering</h1>
+    <div class="subtitle">Benchmark Variant B: Relabeled Fields & Flex Layout</div>
     <form id="techscale-form">
       <div class="input-field">
         <label for="applicant_name">Applicant Name</label>
-        <input type="text" id="applicant_name" name="applicant_name" placeholder="Full name" required>
+        <input type="text" id="applicant_name" name="applicant_name" placeholder="Full applicant name" required>
       </div>
       <div class="input-field">
         <label for="contact_email">Contact Email</label>
-        <input type="email" id="contact_email" name="contact_email" placeholder="email@domain.com" required>
+        <input type="email" id="contact_email" name="contact_email" placeholder="contact@domain.com" required>
       </div>
       <div class="input-field">
         <label for="cv_file">Upload CV Document</label>
@@ -39,7 +40,7 @@
       </div>
       <button type="submit" id="btn-apply-now" class="action-btn">Apply Now</button>
     </form>
-    <div id="success-banner" class="success">Application Submitted Successfully!</div>
+    <div id="success-banner" class="success">&check; Application Submitted Successfully!</div>
   </div>
 
   <script>

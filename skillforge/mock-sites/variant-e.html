@@ -4,26 +4,28 @@
   <meta charset="UTF-8">
   <title>Nexus Next-Gen Careers (Variant E - UNSEEN)</title>
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; background: #090d16; color: #f1f5f9; padding: 40px; display: flex; justify-content: center; }
-    .portal { background: #131b2e; border-radius: 20px; padding: 40px; width: 100%; max-width: 600px; border: 1px solid #1e293b; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); }
-    .badge { display: inline-block; padding: 4px 12px; background: #8b5cf6; color: white; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
-    h1 { font-size: 1.75rem; color: #a78bfa; margin: 0 0 8px 0; }
-    .section-title { font-size: 1rem; color: #94a3b8; border-bottom: 1px solid #1e293b; padding-bottom: 8px; margin: 24px 0 16px 0; font-weight: 600; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #070a12; color: #f1f5f9; padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
+    .portal { background: rgba(19, 27, 46, 0.85); border-radius: 20px; padding: 40px; width: 100%; max-width: 620px; border: 1px solid rgba(192, 132, 252, 0.3); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); backdrop-filter: blur(16px); }
+    .badge { display: inline-block; padding: 6px 14px; background: linear-gradient(135deg, #7c3aed, #9333ea); color: white; border-radius: 9999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; box-shadow: 0 0 15px rgba(124, 58, 237, 0.5); }
+    h1 { font-size: 1.85rem; color: #c084fc; margin: 0 0 6px 0; font-weight: 800; }
+    .subtitle { color: #94a3b8; font-size: 0.88rem; margin-bottom: 24px; }
+    .section-title { font-size: 0.95rem; color: #a78bfa; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; margin: 24px 0 16px 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .input-box { margin-bottom: 16px; }
-    label { display: block; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 6px; font-weight: 500; }
-    input[type="text"], input[type="email"], input[type="number"], input[type="file"], select { width: 100%; padding: 12px; background: #0b1120; border: 1px solid #334155; border-radius: 8px; color: #fff; box-sizing: border-box; }
-    .checkbox-wrap { display: flex; align-items: center; gap: 10px; margin: 20px 0; }
-    .btn-finalize { background: linear-gradient(135deg, #7c3aed, #6366f1); color: white; border: none; padding: 16px; width: 100%; border-radius: 10px; font-size: 1.05rem; font-weight: 700; cursor: pointer; box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3); transition: transform 0.1s; }
-    .btn-finalize:hover { transform: translateY(-1px); }
-    .success { display: none; margin-top: 24px; padding: 20px; background: #065f46; border: 1px solid #10b981; color: #a7f3d0; border-radius: 10px; text-align: center; font-weight: 700; font-size: 1.1rem; }
+    label { display: block; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 6px; font-weight: 600; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="file"], select { width: 100%; padding: 12px; background: #0b0f19; border: 1px solid #334155; border-radius: 8px; color: #fff; box-sizing: border-box; font-size: 0.95rem; }
+    input:focus, select:focus { border-color: #c084fc; outline: none; }
+    .checkbox-wrap { display: flex; align-items: center; gap: 12px; margin: 24px 0; background: rgba(0,0,0,0.2); padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
+    .btn-finalize { background: linear-gradient(135deg, #7c3aed, #6366f1); color: white; border: none; padding: 16px; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 700; cursor: pointer; box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4); transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-finalize:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(124, 58, 237, 0.6); }
+    .success { display: none; margin-top: 24px; padding: 18px; background: rgba(52, 211, 153, 0.15); border: 1px solid #10b981; color: #6ee7b7; border-radius: 12px; text-align: center; font-weight: 700; font-size: 1.1rem; }
   </style>
 </head>
 <body>
   <div class="portal">
     <span class="badge">Unseen Variant E</span>
     <h1>Nexus Portal - Job Application</h1>
-    <p style="color: #64748b; font-size: 0.9rem;">Modern card design with custom confirmation & selector</p>
+    <div class="subtitle">Modern multi-step card design with policy verification & selector</div>
 
     <form id="nexus-form">
       <div class="section-title">1. Candidate Information</div>
@@ -33,7 +35,7 @@
           <input type="text" id="candidate_full_name" name="candidate_full_name" placeholder="Morgan Reed" required>
         </div>
         <div class="input-box">
-          <label for="candidate_email_address">Primary Email</label>
+          <label for="candidate_email_address">Primary Email Address</label>
           <input type="email" id="candidate_email_address" name="candidate_email_address" placeholder="morgan@domain.org" required>
         </div>
       </div>
@@ -58,7 +60,7 @@
       <button type="submit" id="final-submit-trigger" class="btn-finalize">Finalize & Submit Application</button>
     </form>
 
-    <div id="success-banner" class="success">Application Submitted Successfully!</div>
+    <div id="success-banner" class="success">&check; Application Submitted Successfully!</div>
   </div>
 
   <script>

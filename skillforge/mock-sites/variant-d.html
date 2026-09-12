@@ -4,21 +4,23 @@
   <meta charset="UTF-8">
   <title>Vanguard Labs - Job Application (Variant D)</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0f172a; color: #f8fafc; padding: 40px; display: flex; justify-content: center; position: relative; }
-    .card { background: #1e293b; border-radius: 12px; padding: 32px; width: 100%; max-width: 500px; border: 1px solid #334155; }
-    h2 { color: #f59e0b; margin-top: 0; }
-    .form-group { margin-bottom: 18px; }
-    label { display: block; margin-bottom: 6px; font-weight: 600; color: #cbd5e1; }
-    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 10px; background: #0f172a; border: 1px solid #475569; border-radius: 6px; color: #fff; box-sizing: border-box; }
-    button { background: #d97706; color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: 700; cursor: pointer; }
-    button:hover { background: #b45309; }
-    .success { display: none; margin-top: 20px; padding: 16px; background: #065f46; border: 1px solid #10b981; color: #a7f3d0; border-radius: 6px; text-align: center; font-weight: bold; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #070a12; color: #f8fafc; padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 100vh; position: relative; box-sizing: border-box; }
+    .card { background: rgba(15, 23, 42, 0.8); border-radius: 18px; padding: 38px; width: 100%; max-width: 520px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.6); backdrop-filter: blur(12px); }
+    h2 { color: #f59e0b; margin-top: 0; font-size: 1.7rem; font-weight: 800; }
+    .subtitle { color: #64748b; font-size: 0.88rem; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 8px; font-weight: 600; color: #cbd5e1; font-size: 0.88rem; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 12px; background: #0b0f19; border: 1px solid #475569; border-radius: 8px; color: #fff; box-sizing: border-box; font-size: 0.95rem; }
+    input:focus { border-color: #f59e0b; outline: none; }
+    button { background: linear-gradient(135deg, #d97706, #b45309); color: white; border: none; padding: 14px; width: 100%; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4); transition: all 0.2s; }
+    button:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(217, 119, 6, 0.6); }
+    .success { display: none; margin-top: 24px; padding: 16px; background: rgba(52, 211, 153, 0.15); border: 1px solid #10b981; color: #6ee7b7; border-radius: 10px; text-align: center; font-weight: 700; font-size: 1.05rem; }
 
-    /* Modal Overlay (Adversarial element) */
-    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 9999; }
-    .modal-box { background: #1e293b; border: 2px solid #f59e0b; padding: 24px; border-radius: 12px; max-width: 400px; text-align: center; }
-    .modal-box h3 { color: #f59e0b; margin-top: 0; }
-    .close-btn { background: #334155; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin-top: 16px; font-weight: 600; }
+    /* Modal Overlay (Adversarial Element) */
+    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+    .modal-box { background: #0f172a; border: 2px solid #f59e0b; padding: 32px; border-radius: 16px; max-width: 420px; text-align: center; box-shadow: 0 0 30px rgba(245, 158, 11, 0.3); }
+    .modal-box h3 { color: #f59e0b; margin-top: 0; font-size: 1.3rem; }
+    .close-btn { background: #334155; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-top: 20px; font-weight: 600; transition: background 0.2s; }
     .close-btn:hover { background: #475569; }
   </style>
 </head>
@@ -27,22 +29,22 @@
   <div id="talent-modal" class="modal-overlay">
     <div class="modal-box">
       <h3>Join Talent Community</h3>
-      <p style="color: #94a3b8; font-size: 0.9rem;">Sign up for job alerts before applying.</p>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 8px;">Sign up for job alerts and announcements before completing your application.</p>
       <button type="button" id="dismiss-modal-btn" class="close-btn">Dismiss & Continue</button>
     </div>
   </div>
 
   <div class="card">
     <h2>Vanguard Labs - Career Form</h2>
-    <p style="color: #64748b; font-size: 0.85rem;">Variant D: Adversarial Modal Interrupt & Validation</p>
+    <div class="subtitle">Benchmark Variant D: Adversarial Modal Interrupt & Validation</div>
     <form id="vanguard-form">
       <div class="form-group">
         <label for="candidate_name">Candidate Name</label>
-        <input type="text" id="candidate_name" name="candidate_name" required>
+        <input type="text" id="candidate_name" name="candidate_name" placeholder="Full candidate name" required>
       </div>
       <div class="form-group">
         <label for="email_address">Email Address</label>
-        <input type="email" id="email_address" name="email_address" required>
+        <input type="email" id="email_address" name="email_address" placeholder="email@vanguard.org" required>
       </div>
       <div class="form-group">
         <label for="attachment">Attach Resume File</label>
@@ -54,7 +56,7 @@
       </div>
       <button type="submit" id="submit-application">Complete Application</button>
     </form>
-    <div id="success-banner" class="success">Application Submitted Successfully!</div>
+    <div id="success-banner" class="success">&check; Application Submitted Successfully!</div>
   </div>
 
   <script>

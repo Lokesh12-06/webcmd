@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Acme Corp - Career Application (Variant A)</title>
+  <title>Acme Corp - Career Portal (Variant A)</title>
   <style>
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #f8fafc; padding: 40px; display: flex; justify-content: center; }
-    .card { background: #1e293b; border-radius: 12px; padding: 32px; width: 100%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
-    h2 { margin-top: 0; color: #38bdf8; font-size: 1.5rem; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #070a12; color: #f8fafc; padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
+    .card { background: rgba(15, 23, 42, 0.8); border-radius: 16px; padding: 36px; width: 100%; max-width: 520px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); }
+    h2 { margin-top: 0; color: #38bdf8; font-size: 1.6rem; font-weight: 800; }
+    .subtitle { color: #64748b; font-size: 0.88rem; margin-bottom: 24px; }
     .form-group { margin-bottom: 20px; }
-    label { display: block; margin-bottom: 8px; font-weight: 500; color: #94a3b8; }
-    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 10px 14px; background: #0f172a; border: 1px solid #475569; border-radius: 6px; color: #fff; box-sizing: border-box; }
-    button { background: #0284c7; color: white; border: none; padding: 12px 20px; width: 100%; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
-    button:hover { background: #0369a1; }
-    .success { display: none; margin-top: 20px; padding: 16px; background: #065f46; border: 1px solid #10b981; color: #a7f3d0; border-radius: 6px; text-align: center; font-weight: 600; }
+    label { display: block; margin-bottom: 8px; font-weight: 600; color: #94a3b8; font-size: 0.88rem; }
+    input[type="text"], input[type="email"], input[type="number"], input[type="file"] { width: 100%; padding: 12px; background: #0b0f19; border: 1px solid #334155; border-radius: 8px; color: #fff; box-sizing: border-box; font-size: 0.95rem; }
+    input:focus { border-color: #38bdf8; outline: none; }
+    button { background: linear-gradient(135deg, #0284c7, #2563eb); color: white; border: none; padding: 14px; width: 100%; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4); }
+    button:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(2, 132, 199, 0.6); }
+    .success { display: none; margin-top: 24px; padding: 16px; background: rgba(52, 211, 153, 0.15); border: 1px solid #10b981; color: #6ee7b7; border-radius: 10px; text-align: center; font-weight: 700; font-size: 1.05rem; }
   </style>
 </head>
 <body>
   <div class="card">
     <h2>Acme Corp - Career Application</h2>
-    <p style="color: #64748b; font-size: 0.9rem;">Variant A: Standard Form</p>
+    <div class="subtitle">Benchmark Variant A: Standard Layout</div>
     <form id="app-form">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" name="fullName" placeholder="e.g. Alex Taylor" required>
+        <input type="text" id="fullName" name="fullName" placeholder="Alex Morgan" required>
       </div>
       <div class="form-group">
         <label for="email">Email Address</label>
         <input type="email" id="email" name="email" placeholder="alex@example.com" required>
       </div>
       <div class="form-group">
-        <label for="resume">Resume / CV</label>
+        <label for="resume">Resume / CV Document</label>
         <input type="file" id="resume" name="resume">
       </div>
       <div class="form-group">
@@ -38,7 +40,7 @@
       </div>
       <button type="submit" id="btn-submit">Submit Application</button>
     </form>
-    <div id="success-banner" class="success">Application Submitted Successfully!</div>
+    <div id="success-banner" class="success">&check; Application Submitted Successfully!</div>
   </div>
 
   <script>
